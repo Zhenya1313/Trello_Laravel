@@ -32,6 +32,7 @@ class ObjectiveController extends Controller
         return  view('objective.create' , [
            'objective' => [],
             'projects' => Project::where('user_id',Auth::id())->get(),
+            'users'=> User::all(),
             'delimiter' => ''
         ]);
     }
@@ -49,12 +50,16 @@ class ObjectiveController extends Controller
         $objective->title = $request->input('title');
         $objective->date = $request->input('date');
         $objective->status = $request->input('status');
+        $objective->content = $request->input('content');
         $objective->user_login = Auth::user()->email;
         $objective->time = $request->input('time');
         $objective->save();
 
         if ($request->has('projects')) :
             $objective->projects()->attach($request->input());
+        endif;
+        if ($request->has('users')) :
+            $objective->users()->attach($request->input());
         endif;
 
         return redirect()->route('objective.index');
@@ -82,6 +87,7 @@ class ObjectiveController extends Controller
         return  view('objective.edit' , [
             'objective' => $objective,
             'projects' => Project::where('user_id',Auth::id())->get(),
+            'users'=> User::all(),
             'delimiter' => ''
         ]);
     }
@@ -95,11 +101,19 @@ class ObjectiveController extends Controller
      */
     public function update(Request $request, Objective $objective)
     {
-        $objective->update($request->except('projects'));
+        $objective->update($request->except('projects','users'));
+
 
         $objective->projects()->detach();
         if ($request->has('projects')) :
             $objective->projects()->attach($request->input('projects'));
+        endif;
+
+        $objective->update($request->except('users'));
+
+        $objective->users()->detach();
+        if ($request->has('users')) :
+            $objective->users()->attach($request->input('users'));
         endif;
 
         return redirect()->route('objective.index');

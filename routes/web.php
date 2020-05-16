@@ -88,4 +88,6 @@ Route::resource('objective', 'ObjectiveController');
 Route::get('profile', 'Admin\UserManagment\UserController@profile')->name('profile');;
 Route::post('profile', 'Admin\UserManagment\UserController@update_avatar');
 
+Route::resource('editor', 'CKEditorController');
 
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');

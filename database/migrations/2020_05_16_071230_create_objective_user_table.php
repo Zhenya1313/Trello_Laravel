@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateObjectivesTable extends Migration
+class CreateObjectiveUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateObjectivesTable extends Migration
      */
     public function up()
     {
-        Schema::create('objectives', function (Blueprint $table) {
+        Schema::create('objective_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('time');
-            $table->text('date');
-            $table->text('content')->nullable();
-            $table->text('status')->nullable();
-            $table->string('user_login');
+            $table->integer('objective_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateObjectivesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objectives');
+        Schema::dropIfExists('objective_user');
     }
 }

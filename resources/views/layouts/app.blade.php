@@ -89,12 +89,7 @@
             @yield('content')
         </main>
     </div>
-    <script > $(document).ready(function() {
-            $("#content").mdbWYSIWYG({
 
-            });
-        });
-    </script>
     <script >
         $(document).ready(function() {
             $('#example').DataTable();

@@ -16,9 +16,9 @@ class CreateObjectiveProjectTable extends Migration
         Schema::create('objective_project', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('objective_id')->unsigned();
-            $table->foreign('objective_id')->references('id')->on('objectives')->onDelete('cascade');
+//            $table->foreign('objective_id')->references('id')->on('objectives')->onDelete('cascade');
             $table->integer('project_id')->unsigned();
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+//            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
 
             $table->timestamps();
         });

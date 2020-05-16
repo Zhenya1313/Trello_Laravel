@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
         return view('admin.dashboard', [
             'projects' => Project::where('user_id',Auth::id())->get(),
-            'objectives' => Objective::lastObjectives(10),
+            'objectives' => Objective::lastObjectives(5),
             'count_projects_all' => Project::count(),
             'count_projects_ready' => Project::where('status', '=', 1)->count(),
             'count_projects_process' => Project::where('status', '=', 2)->count(),

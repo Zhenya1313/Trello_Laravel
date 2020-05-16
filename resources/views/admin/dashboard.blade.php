@@ -4,38 +4,91 @@
 
  <div class="container">
      <div class="row">
-        <div class="col-sm-3">
-            <div class="jumbotron">
-                <p><span class="label label-primary">Проекти: {{$count_projects_all}}</span></p>
-            </div>
-        </div>
-         <div class="col-sm-3">
-             <div class="jumbotron">
-                 <p><span class="label label-primary">Проекти выполнены: {{$count_projects_ready}}</span></p>
+         <div class="col-2">
+             @include('menu.left')
+         </div>
+         <div class="col-10">
+     <div class="row">
+         <div class="col-4">
+             <div class="card card-inverse" style="border-color: #318fdb">
+                 <div class="card-block ">
+                     <div class="row" style="padding-top: 20px; padding-bottom: 20px">
+                         <div class="col-6" align="center" >
+                             <i class="fa fa-list-ol fa-4x" aria-hidden="true" style="color: #318fdb"></i>
+                         </div>
+                         <div class="col-6" >
+                             <div class="row">
+                                 <div class="col-12" align="center">
+                                     <h5 class="card-text"><strong>ВСЕ</strong></h5>
+                                 </div>
+                                 <br>
+                                 <div class="col-12" align="center">
+                                     <h3 ><span class="badge badge-primary badge-pill">{{$count_projects_all}}</span></h3>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
              </div>
          </div>
-         <div class="col-sm-3">
-             <div class="jumbotron">
-                 <p><span class="label label-primary">Проекти в процесе: {{$count_projects_process}}</span></p>
-             </div>
-         </div>
-         <div class="col-sm-3">
-             <div class="jumbotron">
-                 <p><span class="label label-primary">Задачи: {{$count_objectives}}</span></p>
-             </div>
-         </div>
-         <div class="col-sm-3">
-             <div class="jumbotron">
-                 <p><span class="label label-primary">Учасники проекта: {{$count_users}}</span></p>
-             </div>
-         </div>
-         <div class="col-sm-3">
-             <div class="jumbotron">
-                 <p><span class="label label-primary">Пользователи сегодня 0</span></p>
-             </div>
-         </div>
-     </div>
 
+         <div class="col-4">
+             <div class="card card-inverse" style="border-color: green">
+                 <div class="card-block ">
+                     <div class="row" style="padding-top: 20px; padding-bottom: 20px">
+                     <div class="col-6" align="center" >
+                         <i class="fa fa-calendar-check-o fa-4x" aria-hidden="true" style="color: green"></i>
+                     </div>
+                     <div class="col-6" >
+                         <div class="row">
+                             <div class="col-12">
+                                 <h5 class="card-text"><strong>ВЫПОЛНЕНО</strong></h5>
+                             </div>
+                             <br>
+                             <div class="col-12" align="center">
+                                <h3 ><span class="badge badge-primary badge-pill">{{$count_projects_ready}}</span></h3>
+                             </div>
+                         </div>
+                    </div>
+                    </div>
+                 </div>
+             </div>
+         </div>
+
+         <div class="col-4">
+             <div class="card card-inverse" style="border-color: darkorange">
+                 <div class="card-block ">
+                     <div class="row" style="padding-top: 20px; padding-bottom: 20px">
+                         <div class="col-6" align="center" >
+                             <i class="fa fa-hourglass-half fa-4x" aria-hidden="true" style="color:darkorange"></i>
+                         </div>
+                         <div class="col-6" >
+                             <div class="row">
+                                 <div class="col-12">
+                                     <h5 class="card-text"><strong>В ПРОЦЕССЕ</strong></h5>
+                                 </div>
+                                 <br>
+                                 <div class="col-12" align="center">
+                                     <h3 ><span class="badge badge-primary badge-pill">{{$count_projects_process}}</span></h3>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+{{--         <div class="col-sm-3">--}}
+{{--             <div class="jumbotron">--}}
+{{--                 <p><span class="label label-primary">Учасники проекта: {{$count_users}}</span></p>--}}
+{{--             </div>--}}
+{{--         </div>--}}
+{{--         <div class="col-sm-3">--}}
+{{--             <div class="jumbotron">--}}
+{{--                 <p><span class="label label-primary">Пользователи сегодня 0</span></p>--}}
+{{--             </div>--}}
+{{--         </div>--}}
+     </div>
+             <br>
      <div class="row">
          <div class="col-6">
              <a href="{{route('project.create')}}">
@@ -47,7 +100,7 @@
                      <a class="" style="text-decoration: none; " href="{{route('project.edit', $project)}}">
                          <h4 class="list-group-item-heading">{{$project->title}}</h4>
                      </a>
-                     <span class="badge badge-primary badge-pill">{{$project->objectives()->count()}}</span>
+                     <h5><span class="badge badge-primary badge-pill">{{$project->objectives()->count()}}</span></h5>
                  </li>
              </ul>
              @endforeach
@@ -61,24 +114,14 @@
                      <li class="list-group-item d-flex justify-content-between align-items-center">
                          <a class="" style="text-decoration: none; " href="{{route('objective.edit', $objective)}}">
                              <h4 class="list-group-item-heading">{{$objective->title}}</h4>
-                             <p class="list-group-item-text">
-                                 <h6>Проект: {{$objective->projects()->pluck('title')->implode(', ')}}</h6>
-                             </p>
                          </a>
+                         <h5 style="color:#318fdb">{{$objective->projects()->pluck('title')->implode(', ')}}</h5>
                      </li>
                  </ul>
              @endforeach
          </div>
      </div>
  </div>
- <br>
- <div class="container">
-     <div class="row">
-         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-             <div class="progress">
-                 <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-             </div>
-        </div>
  </div>
  </div>
 @endsection

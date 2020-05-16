@@ -12,6 +12,11 @@ class Objective extends Model
         return $this->belongsToMany('App\Project');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
     public function scopeLastObjectives($query, $count)
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
