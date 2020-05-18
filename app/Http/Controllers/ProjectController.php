@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Project;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,7 @@ class ProjectController extends Controller
         return view(' project.create', [
             'project' => [],
             'projects' => Project::where('user_id',Auth::id())->get(),
+            'users'=> User::all(),
             'delimiter' => ''
         ]);
     }
@@ -32,6 +34,11 @@ class ProjectController extends Controller
         $project->user_id = Auth::id();
         $project->user_email = Auth::user()->email;
         $project->save();
+
+        if ($request->has('users')) :
+            $project->users()->attach($request->input());
+        endif;
+
         return redirect()->route('project.index');
     }
     public function show(Project $project)
@@ -46,12 +53,19 @@ class ProjectController extends Controller
         return view(' project.edit', [
             'project' => $project,
             'projects' => Project::where('user_id',Auth::id())->get(),
+            'users'=> User::all(),
             'delimiter' => ''
         ]);
     }
     public function update(Request $request, Project $project)
     {
-        $project->update($request->all());
+        $project->update($request->except('users'));
+
+
+        $project->users()->detach();
+        if ($request->has('users')) :
+            $project->users()->attach($request->input('users'));
+        endif;
         return redirect()->route('project.index');
     }
     public function destroy(Project $project)

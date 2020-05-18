@@ -8,7 +8,7 @@
 
         <main role="main" class="col-10 col-md-10 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Задачи</h1>
+                <h1 class="h2"><i class="fa fa-thumb-tack" aria-hidden="true"></i> Задачи</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <a href="{{ route('objective.create') }}" class="btn btn-outline-primary -pull-right">
                         <i class="fa fa-plus"></i> Cоздать задачу
@@ -21,11 +21,11 @@
                         <br>
                         <table id="example" class="table table-striped " style="width:100%">
                             <thead>
-                            <tr>
+                            <tr align="center">
                                 <th><span class="icon"><i class="fa fa-bookmark"></i></span> Название</th>
                                 <th>Даты <span class="icon"><i class="fa fa-calendar"></i></span></th>
-                                <th>Cтатус <span class="icon"><i class="fa fa-calendar"></i></span></th>
-                                <th>Люди <span class="icon"><i class="fa fa-spinner"></i></span></th>
+                                <th>Cтатус <span class="icon"><i class="fa fa-spinner"></i></span></th>
+                                <th>Люди <span class="icon"><i class="fa fa-users"></i></span></th>
                                 <th>Действия</th>
                                 <th></th>
                             </tr>
@@ -34,7 +34,7 @@
                             @forelse($objective as $objective)
                                 <tr>
                                     <td style="vertical-align: middle"><a><h4>{{ $objective->title ?? '' }}</h4></a></td></td>
-                                    <td>
+                                    <td align="center">
                                         <p><strong>Обновлено:</strong> {{ $objective->updated_at ?? '' }}</p>
                                         <p><strong>Выполнить до:</strong> {{ $objective->date ?? '' }} {{ $objective->time ?? '' }}</p>
                                     </td>
@@ -49,7 +49,9 @@
                                     </td>
                                     <td>
                                         <p><strong>Создатель:</strong> {{ $objective->user_login ?? '' }}</p>
-                                        <p><strong>Исполнитель</strong> dmytroshevchenko@gmail.com</p>
+                                        @foreach($objective->users as $user)
+                                        <p><strong>Исполнитель:</strong> {{ $user->email}}</p>
+                                            @endforeach
                                     </td>
                                     <td style="vertical-align: middle">
                                         <form onsubmit="if(confirm('Удалить?')){return true} else{return false}"
@@ -57,9 +59,9 @@
                                             {{method_field('DELETE') }}
                                             {{ csrf_field() }}
                                             <a class="btn btn-default" href="{{route('objective.edit', $objective)}}">
-                                                <i class="fa fa-edit" style="color: blue; vertical-align: middle"></i>
+                                                <i class="fa fa-edit fa-2x" style="color: blue; vertical-align: middle"></i>
                                             </a>
-                                            <button type="submit" class="btn"><i class="fa fa-trash-o" style="color: red; vertical-align: middle "></i></button>
+                                            <button type="submit" class="btn"><i class="fa fa-trash-o fa-2x" style="color: red; vertical-align: middle "></i></button>
                                         </form>
                                     </td>
                                     <td></td>
@@ -67,17 +69,17 @@
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        <h1 class="text-center" style="color: royalblue">Проекты отсутствуют!</h1>
+                                        <h1 class="text-center" style="color: royalblue">Задачи отсутствуют!</h1>
                                     </td>
                                 </tr>
                             @endforelse
                             </tbody>
                             <tfoot>
-                            <tr>
+                            <tr align="center">
                                 <th><span class="icon"><i class="fa fa-bookmark"></i></span> Название</th>
-                                <th>Время <span class="icon"><i class="fa fa-calendar"></i></span></th>
-                                <th>Время <span class="icon"><i class="fa fa-calendar"></i></span></th>
+                                <th>Даты <span class="icon"><i class="fa fa-calendar"></i></span></th>
                                 <th>Cтатус <span class="icon"><i class="fa fa-spinner"></i></span></th>
+                                <th>Люди <span class="icon"><i class="fa fa-users"></i></span></th>
                                 <th>Действия</th>
                                 <th></th>
                             </tr>
@@ -88,8 +90,5 @@
             </div>
         </main>
     </div>
-
-
-
 
 @endsection

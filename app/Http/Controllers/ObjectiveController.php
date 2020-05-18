@@ -18,7 +18,8 @@ class ObjectiveController extends Controller
     public function index()
     {
         return view('objective.index', [
-            'objective' => Objective::get()
+            'objective' => Objective::where('user_login',Auth::id())->get() 
+
         ]);
     }
 
@@ -76,12 +77,7 @@ class ObjectiveController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Objective  $objective
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Objective $objective)
     {
         return  view('objective.edit' , [
@@ -92,13 +88,7 @@ class ObjectiveController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Objective  $objective
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Objective $objective)
     {
         $objective->update($request->except('projects','users'));
@@ -119,12 +109,7 @@ class ObjectiveController extends Controller
         return redirect()->route('objective.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Objective  $objective
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Objective $objective)
     {
 
@@ -132,8 +117,5 @@ class ObjectiveController extends Controller
         return redirect()->route('objective.index');
     }
 
-//    public function deleteObjective($id){
-//        Objective::find($id)->delete();
-//        return redirect()->route('objective.destroy', $id)->with('success', 'Задача была удалена!');
-//    }
+
 }
