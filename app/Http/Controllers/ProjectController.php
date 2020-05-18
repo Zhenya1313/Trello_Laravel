@@ -36,7 +36,7 @@ class ProjectController extends Controller
         $project->save();
 
         if ($request->has('users')) :
-            $project->users()->attach($request->input());
+            $project->users()->attach($request->input('id'));
         endif;
 
         return redirect()->route('project.index');

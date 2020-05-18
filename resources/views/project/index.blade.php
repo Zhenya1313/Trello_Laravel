@@ -243,7 +243,7 @@
                                 <hr style="width: 90%">
                                 <h5>
                                     <p>Создатель: </p>
-                                    <p align="center"><i class="fa fa-user-circle" aria-hidden="true"></i> {{ $project->user_email ?? '' }}</p>
+                                    <p align="center"> <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $project->user_email ?? '' }}</p>
                                 </h5>
                                 <hr style="width: 90%">
 

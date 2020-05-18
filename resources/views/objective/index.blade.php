@@ -21,7 +21,7 @@
                         <br>
                         <table id="example" class="table table-striped " style="width:100%">
                             <thead>
-                            <tr align="center">
+                            <tr >
                                 <th><span class="icon"><i class="fa fa-bookmark"></i></span> Название</th>
                                 <th>Даты <span class="icon"><i class="fa fa-calendar"></i></span></th>
                                 <th>Cтатус <span class="icon"><i class="fa fa-spinner"></i></span></th>
@@ -48,10 +48,20 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <p><strong>Создатель:</strong> {{ $objective->user_login ?? '' }}</p>
-                                        @foreach($objective->users as $user)
-                                        <p><strong>Исполнитель:</strong> {{ $user->email}}</p>
+{{--                                        <p><strong>Создатель:</strong><img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $objective->user_login ?? '' }}</p>--}}
+{{--                                        @foreach($objective->users as $user)--}}
+{{--                                        <p><strong>Исполнитель:</strong> {{ $user->email}}</p>--}}
+{{--                                            @endforeach--}}
+                                        <details>
+                                            <summary><strong>Cоздатель</strong></summary>
+                                            <a><img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $objective->user_login ?? '' }}</a>
+                                        </details>
+                                        <details>
+                                            <summary><strong>Исполнитель</strong></summary>
+                                            @foreach($objective->users as $user)
+                                            <a><img src="/uploads/avatars/{{$user->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $user->email}}</a>
                                             @endforeach
+                                        </details>
                                     </td>
                                     <td style="vertical-align: middle">
                                         <form onsubmit="if(confirm('Удалить?')){return true} else{return false}"
@@ -59,10 +69,11 @@
                                             {{method_field('DELETE') }}
                                             {{ csrf_field() }}
                                             <a class="btn btn-default" href="{{route('objective.edit', $objective)}}">
-                                                <i class="fa fa-edit fa-2x" style="color: blue; vertical-align: middle"></i>
+                                                <i class="fa fa-edit " style="color: blue; vertical-align: middle"></i>
                                             </a>
-                                            <button type="submit" class="btn"><i class="fa fa-trash-o fa-2x" style="color: red; vertical-align: middle "></i></button>
+                                            <button type="submit" class="btn"><i class="fa fa-trash-o " style="color: red; vertical-align: middle "></i></button>
                                         </form>
+                                        </div>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -75,7 +86,7 @@
                             @endforelse
                             </tbody>
                             <tfoot>
-                            <tr align="center">
+                            <tr >
                                 <th><span class="icon"><i class="fa fa-bookmark"></i></span> Название</th>
                                 <th>Даты <span class="icon"><i class="fa fa-calendar"></i></span></th>
                                 <th>Cтатус <span class="icon"><i class="fa fa-spinner"></i></span></th>

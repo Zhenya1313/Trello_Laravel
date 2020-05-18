@@ -10,24 +10,23 @@ use Illuminate\Support\Facades\Auth;
 
 class ObjectiveController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('objective.index', [
-            'objective' => Objective::where('user_login',Auth::id())->get() 
+//        $objectives = Objective::where('user_login',Auth::user()->email)->get()->toArray();
+//        $objectives_users = (User::find(Auth::user()->id))->objectives()->get()->toArray();
+////        dd($objectives_users);
+////        $index = array_search('pivot', $objectives_users);
+//        array_diff_key($objectives_users,['pivot'=>'123']);
+//array_push($objectives,$objectives_users );
 
+
+//        dd($objectives);
+        return view('objective.index', [
+            'objective' => Objective::where('user_login',Auth::user()->email)->get()
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return  view('objective.create' , [
@@ -38,12 +37,6 @@ class ObjectiveController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -57,21 +50,15 @@ class ObjectiveController extends Controller
         $objective->save();
 
         if ($request->has('projects')) :
-            $objective->projects()->attach($request->input());
+            $objective->projects()->attach($request->input('id'));
         endif;
         if ($request->has('users')) :
-            $objective->users()->attach($request->input());
+            $objective->users()->attach($request->input('id'));
         endif;
 
         return redirect()->route('objective.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Objective  $objective
-     * @return \Illuminate\Http\Response
-     */
     public function show(Objective $objective)
     {
         //
