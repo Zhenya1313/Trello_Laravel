@@ -7,6 +7,7 @@ use App\Project;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ObjectiveRequest;
 
 class ObjectiveController extends Controller
 {
@@ -15,13 +16,17 @@ class ObjectiveController extends Controller
     {
 //        $objectives = Objective::where('user_login',Auth::user()->email)->get()->toArray();
 //        $objectives_users = (User::find(Auth::user()->id))->objectives()->get()->toArray();
-////        dd($objectives_users);
-////        $index = array_search('pivot', $objectives_users);
-//        array_diff_key($objectives_users,['pivot'=>'123']);
+//        dd($objectives_users);
+//        $index = array_search('pivot', $objectives_users);
+//        array_diff_key($objectives_users,$objectives);
 //array_push($objectives,$objectives_users );
 
-
+//
 //        dd($objectives);
+
+
+
+
         return view('objective.index', [
             'objective' => Objective::where('user_login',Auth::user()->email)->get()
         ]);
@@ -37,7 +42,7 @@ class ObjectiveController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ObjectiveRequest $request)
     {
 
         $objective = new Objective();
@@ -76,7 +81,7 @@ class ObjectiveController extends Controller
     }
 
 
-    public function update(Request $request, Objective $objective)
+    public function update(ObjectiveRequest $request, Objective $objective)
     {
         $objective->update($request->except('projects','users'));
 

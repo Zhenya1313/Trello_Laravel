@@ -21,7 +21,7 @@
                         <br>
                         <table id="example" class="table table-striped " style="width:100%">
                             <thead>
-                            <tr >
+                            <tr  align="center">
                                 <th><span class="icon"><i class="fa fa-bookmark"></i></span> Название</th>
                                 <th>Даты <span class="icon"><i class="fa fa-calendar"></i></span></th>
                                 <th>Cтатус <span class="icon"><i class="fa fa-spinner"></i></span></th>
@@ -48,10 +48,6 @@
                                         @endif
                                     </td>
                                     <td>
-{{--                                        <p><strong>Создатель:</strong><img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $objective->user_login ?? '' }}</p>--}}
-{{--                                        @foreach($objective->users as $user)--}}
-{{--                                        <p><strong>Исполнитель:</strong> {{ $user->email}}</p>--}}
-{{--                                            @endforeach--}}
                                         <details>
                                             <summary><strong>Cоздатель</strong></summary>
                                             <a><img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $objective->user_login ?? '' }}</a>
@@ -69,7 +65,7 @@
                                             {{method_field('DELETE') }}
                                             {{ csrf_field() }}
                                             <a class="btn btn-default" href="{{route('objective.edit', $objective)}}">
-                                                <i class="fa fa-edit " style="color: blue; vertical-align: middle"></i>
+                                                <i class="fa fa-edit " style="color: #318fdb; vertical-align: middle"></i>
                                             </a>
                                             <button type="submit" class="btn"><i class="fa fa-trash-o " style="color: red; vertical-align: middle "></i></button>
                                         </form>
@@ -102,4 +98,9 @@
         </main>
     </div>
 
+    <div class="col-12" align="center">
+    @include('footer.footer')
+    </div>
 @endsection
+
+

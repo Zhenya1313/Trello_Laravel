@@ -31,10 +31,6 @@ class CreateObjectiveProjectTable extends Migration
      */
     public function down()
     {
-        Schema::table('objective_project', function (Blueprint $table) {
-            $table->dropForeign('objective_project_objective_id_foreign');
-            $table->dropForeign('objective_project_project_id_foreign');
-        });
         Schema::dropIfExists('objective_project');
     }
 }

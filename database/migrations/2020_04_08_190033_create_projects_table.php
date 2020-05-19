@@ -18,8 +18,12 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->date('date');
             $table->string('time');
-            $table->text('status')->nullable();;
+            $table->text('status')->nullable();
             $table->integer('parent_id')->nullable();
+            $table->text('host')->nullable();
+            $table->text('port')->nullable();
+            $table->text('host_name')->nullable();
+            $table->text('parol')->nullable();
             $table->string('user_id');
             $table->string('user_email');
             $table->timestamps();

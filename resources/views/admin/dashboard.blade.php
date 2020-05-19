@@ -77,16 +77,7 @@
                  </div>
              </div>
          </div>
-{{--         <div class="col-sm-3">--}}
-{{--             <div class="jumbotron">--}}
-{{--                 <p><span class="label label-primary">Учасники проекта: {{$count_users}}</span></p>--}}
-{{--             </div>--}}
-{{--         </div>--}}
-{{--         <div class="col-sm-3">--}}
-{{--             <div class="jumbotron">--}}
-{{--                 <p><span class="label label-primary">Пользователи сегодня 0</span></p>--}}
-{{--             </div>--}}
-{{--         </div>--}}
+
      </div>
              <br>
      <div class="row">
@@ -123,5 +114,9 @@
      </div>
  </div>
  </div>
+ </div>
+
+ <div class="col-12" align="center">
+     @include('footer.footer')
  </div>
 @endsection

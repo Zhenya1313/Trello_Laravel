@@ -5,6 +5,7 @@ use App\Project;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -23,7 +24,7 @@ class ProjectController extends Controller
             'delimiter' => ''
         ]);
     }
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
         $project = new Project();
         $project->title = $request->input('title');
@@ -31,6 +32,10 @@ class ProjectController extends Controller
         $project->time = $request->input('time');
         $project->status = $request->input('status');
         $project->parent_id = $request->input('parent_id');
+        $project->host = $request->input('host');
+        $project->port = $request->input('port');
+        $project->host_name = $request->input('hos_name');
+        $project->parol = $request->input('parol');
         $project->user_id = Auth::id();
         $project->user_email = Auth::user()->email;
         $project->save();
@@ -57,7 +62,7 @@ class ProjectController extends Controller
             'delimiter' => ''
         ]);
     }
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
         $project->update($request->except('users'));
 
