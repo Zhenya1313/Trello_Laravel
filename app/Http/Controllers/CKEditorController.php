@@ -14,7 +14,7 @@ class CKEditorController extends Controller
      */
     public function index()
     {
-        return view('editor');
+        return view('objective.form');
     }
 
     /**

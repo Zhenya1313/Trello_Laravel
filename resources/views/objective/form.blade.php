@@ -48,7 +48,7 @@
                             <h5 class="mb-3">Статус</h5>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <select class="custom-select my-1 mr-sm-2" name="status" id="inlineFormCustomSelectPref" value="{{$objective->status}}">
+                                    <select class="custom-select my-1 mr-sm-2" name="status" id="inlineFormCustomSelectPref" value="">
                                         <option value="0">-- без родительского проекта -- </option>
                                         <option value="1" style="color: green">Выполнено</option>
                                         <option value="2" style="color: orange">Выполняется</option>
@@ -57,13 +57,13 @@
                             </div>
                             <hr class="mb-4">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                                     <h5 class="mb-3">Присоединить к:</h5>
                                     <select name="projects[]" multiple="" class="form-control">
                                         @include('objective.objectives')
                                     </select>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                                     <h5 class="mb-3">Исполнитель(ли):</h5>
                                     <select name="users[]" multiple="" class="form-control">
                                         @include('objective.user_obj')
@@ -74,7 +74,7 @@
                             <h5 class="mb-3">Описание</h5>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <textarea name="content" id="content" cols="30" rows="10" class="form-control" value="{{$objective->content ?? ''}}"></textarea>
+                                    <textarea name="content" id="content" cols="30" rows="10" class="form-control" value="">{{$objective->content ?? ''}}</textarea>
                                 </div>
                             </div>
                             <hr class="mb-4">

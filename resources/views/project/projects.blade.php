@@ -1,3 +1,4 @@
+
 @foreach($projects as $projectItem)
     <option value="{{ $projectItem->id ?? '' }}"
     @isset ($project->id)

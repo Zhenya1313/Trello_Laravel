@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container">
     <div class="row">
         <div class="col-2">
             @include('menu.left')
@@ -82,7 +83,7 @@
                             @endforelse
                             </tbody>
                             <tfoot>
-                            <tr >
+                            <tr align="center">
                                 <th><span class="icon"><i class="fa fa-bookmark"></i></span> Название</th>
                                 <th>Даты <span class="icon"><i class="fa fa-calendar"></i></span></th>
                                 <th>Cтатус <span class="icon"><i class="fa fa-spinner"></i></span></th>
@@ -100,6 +101,7 @@
 
     <div class="col-12" align="center">
     @include('footer.footer')
+    </div>
     </div>
 @endsection
 

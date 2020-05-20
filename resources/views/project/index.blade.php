@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <div class="container">
 <div class="row">
     <div class="col-2">
         @include('menu.left')
@@ -18,10 +18,10 @@
             </div>
         </div>
 
-        <div class="container">
+
             <div class="row">
                 @forelse($projects as $project)
-                    <div class=" сol-4 col-sm-4 col-md-4" style="margin-top: 30px">
+                    <div class=" сol-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-top: 30px">
                         <div class="card" style="width: 100%">
                             <img class="card-img-top" src="project.jpg" >
 
@@ -31,8 +31,8 @@
                                 <p class="card-text">
                                 <h5><details>
                                         <summary>Даты <span class="icon"><i class="fa fa-calendar"></i></span></summary>
-                                        <a>Обновлено: {{ $project->updated_at ?? '' }}</a>
-                                        <a>Выполнить до: {{ $project->date ?? '' }} {{ $project->time ?? '' }}</a>
+                                        <p>Обновлено: {{ $project->updated_at ?? '' }}</p>
+                                        <p>Выполнить до: {{ $project->date ?? '' }} {{ $project->time ?? '' }}</p>
                                     </details>
                                 </h5>
                                 <hr style="width: 90%">
@@ -48,7 +48,7 @@
                                 </h5>
                                 <hr style="width: 90%">
                                 <h5><details>
-                                        <summary>Подключение к серверу <span class="icon"><i class="fa fa-server" aria-hidden="true"></i></span></summary>
+                                        <summary>Подключение <span class="icon"><i class="fa fa-server" aria-hidden="true"></i></span></summary>
                                         <p>Host: {{ $project->host ?? '' }}</p>
                                         <p>Port: {{ $project->port ?? '' }}</p>
                                         <p>User name: {{ $project->host_name ?? '' }}</p>
@@ -57,8 +57,7 @@
                                 </h5>
                                 <hr style="width: 90%">
                                 <h5>
-                                    <p>Создатель: </p>
-                                    <p align="center"> <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $project->user_email ?? '' }}</p>
+                                    <p>Создатель: <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $project->user_email ?? '' }}</p>
                                 </h5>
                                 <hr style="width: 90%">
 
@@ -81,10 +80,11 @@
                 @empty
                 @endforelse
             </div>
-        </div>
+
 
     </main>
 </div>
+    </div>
 
 <div class="col-12" align="center">
     @include('footer.footer')

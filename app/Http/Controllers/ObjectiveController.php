@@ -16,13 +16,13 @@ class ObjectiveController extends Controller
     {
 //        $objectives = Objective::where('user_login',Auth::user()->email)->get()->toArray();
 //        $objectives_users = (User::find(Auth::user()->id))->objectives()->get()->toArray();
-//        dd($objectives_users);
-//        $index = array_search('pivot', $objectives_users);
+////        dd($objectives_users);
+////        $index = array_search('pivot', $objectives_users);
 //        array_diff_key($objectives_users,$objectives);
 //array_push($objectives,$objectives_users );
-
 //
-//        dd($objectives);
+//
+////        dd($objectives,$objectives_users);
 
 
 
@@ -91,7 +91,6 @@ class ObjectiveController extends Controller
             $objective->projects()->attach($request->input('projects'));
         endif;
 
-        $objective->update($request->except('users'));
 
         $objective->users()->detach();
         if ($request->has('users')) :
@@ -108,6 +107,5 @@ class ObjectiveController extends Controller
         $objective->delete();
         return redirect()->route('objective.index');
     }
-
 
 }

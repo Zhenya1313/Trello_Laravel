@@ -54,14 +54,14 @@
                         </div>
                         <hr class="mb-4">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                                 <h5 class="mb-3">Родительский проект</h5>
                                 <select name="parent_id" class="form-control">
                                     <option value="0">-- без родительского проекта -- </option>
                                     @include('project.projects')
                                 </select>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                                 <h5 class="mb-3">Присоединить пользователей:</h5>
                                 <select name="users[]" multiple="" class="form-control">
                                     @include('project.user_proj')
@@ -72,19 +72,19 @@
                         <h5 class="mb-3">Подключение к серверу:</h5>
                         <hr class="mb-4">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                             <label for="lastName">Host</label>
                             <input class="form-control" type="text" name="host" id="host" value="{{ $project->host ?? '' }}">
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                                 <label for="lastName">Port</label>
                                 <input class="form-control" type="text" name="port" id="port" value="{{ $project->port ?? '' }}">
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                                 <label for="lastName">User name</label>
                                 <input class="form-control" type="text" name="host_name" id="host_name" value="{{ $project->host_name ?? '' }}">
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6 col-xl-6 col-lg-6">
                                 <label for="lastName">Password</label>
                                 <input class="form-control" type="text" name="parol" id="parol" value="{{ $project->parol ?? '' }}">
                             </div>

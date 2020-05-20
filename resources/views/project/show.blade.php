@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container">
     <div class="row">
-        <div class="col-2">
+        <div class="col-12 col-sm-12 col-md-2  col-lg-2 col-xl-2">
             @include('menu.left')
         </div>
 
-        <main role="main" class="col-10 col-md-10 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+        <main role="main" class="col-12 col-sm-12 col-md-10  col-lg-10 col-xl-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><i class="fa fa-thumb-tack" aria-hidden="true"></i> Задачи</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
@@ -48,10 +49,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {{--                                        <p><strong>Создатель:</strong><img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $objective->user_login ?? '' }}</p>--}}
-                                        {{--                                        @foreach($objective->users as $user)--}}
-                                        {{--                                        <p><strong>Исполнитель:</strong> {{ $user->email}}</p>--}}
-                                        {{--                                            @endforeach--}}
                                         <details>
                                             <summary><strong>Cоздатель</strong></summary>
                                             <a><img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $objective->user_login ?? '' }}</a>
@@ -104,5 +101,6 @@
 
     <div class="col-12" align="center">
         @include('footer.footer')
+    </div>
     </div>
 @endsection
