@@ -1,8 +1,8 @@
 <?php
 
-//
-//Route::get('/admin', 'DashboardController@dashboard');
-//Route::post('/admin', 'DashboardController@update_avatar');
+Route::get('/help', function () {
+    return view('help');
+})->name('help');
 
 Route::get('/about', function () {
     return view('about');
