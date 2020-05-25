@@ -28,7 +28,7 @@ class ObjectiveController extends Controller
 
 
         return view('objective.index', [
-            'objective' => Objective::where('id')->get()
+            'objective' => Objective::where('user_login',Auth::user()->email)->get()
         ]);
     }
 

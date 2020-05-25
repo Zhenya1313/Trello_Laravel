@@ -65,9 +65,11 @@
                                               action="{{route('objective.destroy', $objective->id)}}" method="post">
                                             {{method_field('DELETE') }}
                                             {{ csrf_field() }}
+                                            @if(Auth::user()->email == $objective->user_login)
                                             <a class="btn btn-default" href="{{route('objective.edit', $objective)}}">
                                                 <i class="fa fa-edit " style="color: #318fdb; vertical-align: middle"></i>
                                             </a>
+                                            @endif
                                             <button type="submit" class="btn"><i class="fa fa-trash-o " style="color: red; vertical-align: middle "></i></button>
                                         </form>
                                         </div>
