@@ -92,6 +92,18 @@
                          <h4 class="list-group-item-heading">{{$project->title}}</h4>
                      </a>
                      <h5><span class="badge badge-primary badge-pill">{{$project->objectives()->count()}}</span></h5>
+                     <form onsubmit="if(confirm('Удалить?')){return true} else{return false}"
+                           action="{{route('project.destroy', $project->id)}}" method="post">
+                         {{method_field('DELETE') }}
+                         {{ csrf_field() }}
+
+                         <a class="btn btn-primary btn-icon" href="{{route('project.edit', $project)}}">
+                             <i class="fa fa-edit"></i>
+                         </a>
+
+
+                         <button type="submit" class="btn btn-danger btn-icon "  ><i class="fa fa-trash-o"></i></button>
+                     </form>
                  </li>
              </ul>
              @endforeach
@@ -107,6 +119,7 @@
                              <h4 class="list-group-item-heading">{{$objective->title}}</h4>
                          </a>
                          <h5 style="color:#318fdb">{{$objective->projects()->pluck('title')->implode(', ')}}</h5>
+
                      </li>
                  </ul>
              @endforeach

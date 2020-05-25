@@ -6,14 +6,24 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        return view('project.index', [
-           'projects' => Project::where('user_id',Auth::id())->get()
-        ]);
+        $user = Auth::id();
+        $users = DB::select("
+                SELECT * FROM projects LEFT JOIN project_user ON  projects.id = project_user.project_id
+                left JOIN users ON project_user.user_id = users.id
+                Where projects.user_id = '$user' OR users.id = '$user'
+            ");
+
+            return view('project.index', [
+                'projects' => $users
+            ]);
+
+
     }
     public function create()
     {

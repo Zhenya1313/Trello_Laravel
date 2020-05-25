@@ -12,7 +12,7 @@
                        оставьте пожалуйста свой отзыв!
                    </h2>
                     <br>
-                    <button type="button" class="btn btn-outline-primary btn-lg">Оставить отзыв</button>
+                    <a href="https://forms.gle/uvtwtYbQhvDdfsNf9"><button type="button" class="btn btn-outline-primary btn-lg">Оставить отзыв</button></a>
                 </div>
             </div>
         </div>

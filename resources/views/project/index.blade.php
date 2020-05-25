@@ -24,9 +24,8 @@
                     <div class=" сol-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-top: 30px">
                         <div class="card" style="width: 100%">
                             <img class="card-img-top" src="project.jpg" >
-
                             <div class="card-body" >
-                                <a href="{{route('project.show', ["id"=>$project->id])}}"><h3 align="center" class="card-title" >{{ $project->title ?? '' }}</h3></a>
+                                <a href="{{route('project.show', ["id"=>$project->project_id])}}"><h3 align="center" class="card-title" >{{ $project->title ?? '' }}</h3></a>
                                 <hr style="width: 90%">
                                 <p class="card-text">
                                 <h5><details>
@@ -59,20 +58,6 @@
                                 <h5>
                                     <p>Создатель: <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 30px; height: 30px;   left:10px; border-radius:50%; "> {{ $project->user_email ?? '' }}</p>
                                 </h5>
-                                <hr style="width: 90%">
-
-                                <form onsubmit="if(confirm('Удалить?')){return true} else{return false}"
-                                      action="{{route('project.destroy', $project->id)}}" method="post">
-                                    {{method_field('DELETE') }}
-                                    {{ csrf_field() }}
-
-                                    <a class="btn btn-primary btn-icon" href="{{route('project.edit', $project)}}">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-
-
-                                    <button type="submit" class="btn btn-danger btn-icon "  ><i class="fa fa-trash-o"></i></button>
-                                </form>
                             </div>
 
                         </div>

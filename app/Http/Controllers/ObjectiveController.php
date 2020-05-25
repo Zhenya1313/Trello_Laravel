@@ -28,7 +28,7 @@ class ObjectiveController extends Controller
 
 
         return view('objective.index', [
-            'objective' => Objective::where('user_login',Auth::user()->email)->get()
+            'objective' => Objective::where('id')->get()
         ]);
     }
 
@@ -105,7 +105,7 @@ class ObjectiveController extends Controller
     {
 
         $objective->delete();
-        return redirect()->route('objective.index');
+        return redirect()->route('home');
     }
 
 }
